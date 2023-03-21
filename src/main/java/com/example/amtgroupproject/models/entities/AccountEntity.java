@@ -3,12 +3,14 @@ package com.example.amtgroupproject.models.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
 @Entity
 @Getter
 @Setter
+@ToString
 public class AccountEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,14 +19,18 @@ public class AccountEntity {
     private BigDecimal balance;
 
     @ManyToOne
+    private BankEntity bank;
+
+    @ManyToOne
     private KlantEntity klant;
 
     public AccountEntity(){
     }
 
-    public AccountEntity(BigDecimal balance, KlantEntity klant){
+    public AccountEntity(BigDecimal balance, KlantEntity klant, BankEntity bank){
         this.balance = balance;
         this.klant = klant;
+        this.bank = bank;
     }
 
     @PrePersist

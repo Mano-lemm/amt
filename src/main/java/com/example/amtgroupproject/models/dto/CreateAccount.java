@@ -9,4 +9,6 @@ public class CreateAccount {
     private BigDecimal initialBalance;
 
     private Long ownerId;
+
+    private Long bankId;
 }

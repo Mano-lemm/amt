@@ -12,17 +12,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class KlantEntity {
+public class BankEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String adress;
+
     private String name;
-
-    public KlantEntity(){
-    }
-
-    public KlantEntity(String name){
-        this.name = name;
-    }
 }

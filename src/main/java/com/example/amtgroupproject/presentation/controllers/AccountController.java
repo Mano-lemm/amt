@@ -21,7 +21,6 @@ public class AccountController {
 
     @PostMapping("/create")
     public AccountResponse create(@RequestBody CreateAccount req){
-        System.out.println(req);
         try {
             return service.createAccount(req);
         } catch (AccountException e){

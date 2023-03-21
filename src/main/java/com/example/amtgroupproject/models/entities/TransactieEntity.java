@@ -13,13 +13,12 @@ public class TransactieEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @ManyToOne
+    private BankEntity uitvoerendeBank;
     @ManyToOne
     private AccountEntity from;
-
     @ManyToOne
     private AccountEntity to;
-
     private BigDecimal amount;
 
     public TransactieEntity(){
@@ -29,5 +28,6 @@ public class TransactieEntity {
         this.from = from;
         this.to = to;
         this.amount = amount;
+        this.uitvoerendeBank = from.getBank();;
     }
 }

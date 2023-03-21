@@ -32,7 +32,10 @@ public class TransactieService {
             ent = mapper.toEntity(req);
             ent.setFrom(fromAccount.get());
             ent.setTo(toAccount.get());
+            ent.setUitvoerendeBank(fromAccount.get().getBank());
             ent = repository.save(ent);
+            fromAccount.get().setBalance(fromAccount.get().getBalance().subtract(req.getAmount()));
+            toAccount.get().setBalance(toAccount.get().getBalance().add(req.getAmount()));
         } catch (Exception e){
             throw new TransactieException();
         }
