@@ -27,15 +27,4 @@ public class AccountController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
     }
-
-    @PostMapping("/create/params")
-    public AccountResponse create(@RequestParam Long Klantid){
-        CreateAccount ca = new CreateAccount();
-        ca.setOwnerId(Klantid);
-        try {
-            return service.createAccount(ca);
-        } catch (AccountException e){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
-    }
 }
