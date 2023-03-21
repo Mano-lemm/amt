@@ -35,7 +35,7 @@ public class AccountEntity {
 
     @PrePersist
     public void init(){
-        if(this.balance == null){
+        if(this.balance == null && this.klant != null){
             this.balance = new BigDecimal(0);
         }
     }

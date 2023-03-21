@@ -1,6 +1,7 @@
 package com.example.amtgroupproject.presentation.controllers;
 
 import com.example.amtgroupproject.models.dto.CreateTransactie;
+import com.example.amtgroupproject.models.dto.DepositToAccount;
 import com.example.amtgroupproject.models.dto.TransactieResponse;
 import com.example.amtgroupproject.services.exceptions.TransactieException;
 import com.example.amtgroupproject.services.flow.TransactieService;
@@ -23,6 +24,16 @@ public class TransactieController {
         try {
             return service.createTransactie(req);
         } catch (TransactieException e){
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/deposit")
+    public TransactieResponse deposit(@RequestBody DepositToAccount req){
+        try {
+            return service.depositToAccount(req);
+        } catch (TransactieException e){
+            System.out.println(e.getMessage());
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

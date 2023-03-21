@@ -24,7 +24,7 @@ public class ATMService {
         ATMEntity ent;
         try {
             ent = mapper.toEntity(req);
-            AccountEntity account = new AccountEntity(BigDecimal.valueOf(Long.MAX_VALUE), null, ent.getEigenaar());
+            AccountEntity account = new AccountEntity(null, null, ent.getEigenaar());
             account = accRepo.save(account);
             ent.setAccount(account);
             ent = repository.save(ent);
