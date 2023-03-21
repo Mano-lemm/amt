@@ -1,6 +1,7 @@
 package com.example.amtgroupproject.presentation.controllers;
 
 import com.example.amtgroupproject.models.dto.CreateKlant;
+import com.example.amtgroupproject.models.dto.DeleteKlant;
 import com.example.amtgroupproject.models.dto.KlantResponse;
 import com.example.amtgroupproject.services.exceptions.KlantException;
 import com.example.amtgroupproject.services.flow.KlantService;
@@ -20,10 +21,18 @@ public class KlantController {
     private final KlantService service;
 
     @PostMapping("/create")
-    public KlantResponse create(@RequestBody @Validated CreateKlant req){
+    public KlantResponse create(@RequestBody @Validated CreateKlant req) {
         try {
             return service.createKlant(req);
-        } catch (KlantException e){
+        } catch (KlantException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @PostMapping("/delete")
+    public KlantResponse delete(@RequestBody @Validated DeleteKlant req) {
+        try {
+            return service.createKlant(req);
+        } catch (KlantException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

@@ -1,6 +1,7 @@
 package com.example.amtgroupproject.services.mappers;
 
 import com.example.amtgroupproject.models.dto.CreateKlant;
+import com.example.amtgroupproject.models.dto.DeleteKlant;
 import com.example.amtgroupproject.models.dto.KlantResponse;
 import com.example.amtgroupproject.models.entities.KlantEntity;
 import org.springframework.stereotype.Component;
@@ -13,5 +14,10 @@ public class KlantMapper {
 
     public KlantEntity toEntity(CreateKlant req){
         return new KlantEntity(req.getName());
+    }
+    public KlantEntity toEntity (DeleteKlant req){
+        KlantEntity entity = new KlantEntity();
+        entity.setId(req.getId());
+        return entity;
     }
 }

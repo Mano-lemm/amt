@@ -1,6 +1,7 @@
 package com.example.amtgroupproject.services.flow;
 
 import com.example.amtgroupproject.models.dto.CreateKlant;
+import com.example.amtgroupproject.models.dto.DeleteKlant;
 import com.example.amtgroupproject.models.dto.KlantResponse;
 import com.example.amtgroupproject.models.entities.KlantEntity;
 import com.example.amtgroupproject.models.repositories.KlantRepository;
@@ -25,4 +26,16 @@ public class KlantService {
         }
         return mapper.toResponse(newKlant);
     }
+
+    public KlantResponse deleteKlant(DeleteKlant req) throws KlantException{
+        KlantEntity Klant=null;
+        try{
+            Klant=mapper.toEntity(req);
+            repository.delete(Klant);
+        } catch (Exception e){
+            throw new KlantException(e);
+        }
+        return mapper.toResponse(Klant);
+    }
 }
+
